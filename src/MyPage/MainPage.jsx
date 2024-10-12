@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
 import { useState,useEffect } from 'react';
 import img from '../images/myChefLogo.png';
+import newImg from '../images/NoRecipeFound.png';
 
 
 
@@ -12,6 +13,7 @@ const MainPage = () => {
   const [initialMeals, setInitialMeals] = useState([]);
   const [searched, setSearched] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState(null);
+  const [noMeals , setNoMeals] = useState(true);
 
 
   function handleInputChange(e) {
@@ -24,7 +26,6 @@ const MainPage = () => {
     reloadData().then((m) => {
       if (m.categories) {
         console.log(m.categories);
-
         setInitialMeals(m.categories);
       } else {
         setInitialMeals([]);
@@ -66,8 +67,9 @@ const MainPage = () => {
       getMealData().then((meal) => {
         if (meal.meals) {
           setMyMeals(meal.meals);
-        } else {
-          setMyMeals([]);
+        } else if(meal.meals == null){
+            console.log('No meals found!!');
+            setNoMeals(true);
         }
       });
     } catch (e) {
@@ -127,7 +129,6 @@ const MainPage = () => {
             ))}
         </div>
       </div>
-
       <div className="flex justify-center mt-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {searched === true &&
@@ -185,6 +186,13 @@ const MainPage = () => {
             </Button>
           </div>
         </div>
+      )}
+
+      {searched  && noMeals == true && (
+       <>
+       <img  className="w-96" src={newImg}/>
+       </>
+       
       )}
     </div>
   </>
