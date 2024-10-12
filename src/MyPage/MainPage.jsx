@@ -5,15 +5,13 @@ import { useState,useEffect } from 'react';
 import img from '../images/myChefLogo.png';
 import newImg from '../images/NoRecipeFound.png';
 
-
-
 const MainPage = () => {
   const [inputField, setInputField] = useState("");
   const [myMeals, setMyMeals] = useState([]);
   const [initialMeals, setInitialMeals] = useState([]);
   const [searched, setSearched] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState(null);
-  const [noMeals , setNoMeals] = useState(true);
+  const [noMeals , setNoMeals] = useState(false);
 
 
   function handleInputChange(e) {
@@ -105,7 +103,7 @@ const MainPage = () => {
       <div className="flex justify-center items-center">
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {searched === false &&
-            initialMeals.map((k) => (
+            initialMeals.map((k) => ( 
               <div
                 key={k.idCategory}
                 className="max-w-xs rounded overflow-hidden shadow-lg bg-white"
@@ -188,11 +186,10 @@ const MainPage = () => {
         </div>
       )}
 
-      {searched  && noMeals == true && (
+      {noMeals == true && searched === true && (
        <>
        <img  className="w-96" src={newImg}/>
        </>
-       
       )}
     </div>
   </>
