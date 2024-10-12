@@ -159,9 +159,9 @@ const MainPage = () => {
       </div>
 
       {selectedMeal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-prose">
-            <h2 className="flex justify-center text-2xl font-seri font-bold mb-4">
+        <div   className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 overflow-y-auto ">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-prose hs-scroll-inside-body-modal-label ">
+            <h2  className="flex justify-center text-2xl font-seri font-bold mb-4">
               {selectedMeal.strMeal}
             </h2>
             <img
