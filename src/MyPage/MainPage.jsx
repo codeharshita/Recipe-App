@@ -84,7 +84,7 @@ const MainPage = () => {
           <img src={img} alt="Logo" className="  h-32 w-25" />
         </div>
         <h1 className=" animate-bounce animate-infinite animate-ease-linear text-5xl font-serif text-center text-white">
-          Délicieux: Find Your Recipe Here
+          Délicieux: Find Your Recipe
         </h1>
       </div>
       <div className="flex w-full max-w-lg px-4 mb-6">
@@ -102,15 +102,14 @@ const MainPage = () => {
       </div>
       
       <div className="flex justify-center items-center  ">
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12  ">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 cursor-pointer  ">
           {searched === false &&
             initialMeals.map((k) => ( 
               <div
                 key={k.idCategory}
-                className="max-w-xs shadow-2xl  overflow-hidden transform  bg-white  hover:bg-white transition hover:scale-125  rounded-lg "
+                className="max-w-xs shadow-2xl overflow-hidden transform  bg-white  hover:bg-white transition hover:scale-125  rounded-lg "
               >
                 <img
-                  className=""
                   src={k.strCategoryThumb}
                   alt={k.strCategory}
                 />
@@ -129,15 +128,14 @@ const MainPage = () => {
         </div>
       </div>
       <div className="flex justify-center mt-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 cursor-pointer">
           {searched === true &&
             myMeals.map((meal) => (
               <div
                 key={meal.idMeal}
-                className="max-w-xs bg-whiteshadow-2xl  overflow-hidden transform  bg-white  hover:bg-white transition hover:scale-125  rounded-lg "
+                className="max-w-xs bg-whiteshadow-2xl overflow-hidden transform  bg-white  hover:bg-white transition hover:scale-125 rounded-lg gap-y-4"
               >
                 <img
-                  className="w-full"
                   src={meal.strMealThumb}
                   alt={meal.strMeal}
                   onClick={() => showRecipes(meal)}
@@ -160,7 +158,7 @@ const MainPage = () => {
 
       {selectedMeal && (
         <div   className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 overflow-y-auto ">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-prose hs-scroll-inside-body-modal-label ">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-prose hs-scroll-inside-body-modal-label cursor-pointer ">
             <h2  className="flex justify-center text-2xl font-seri font-bold mb-4">
               {selectedMeal.strMeal}
             </h2>
@@ -180,9 +178,11 @@ const MainPage = () => {
               <div className="ml-3">{selectedMeal.strArea}</div>
             </p>
             <p className="mt-4">{selectedMeal.strInstructions}</p>
+            <div className="flex justify-center"> 
             <Button className="mt-4" onClick={() => setSelectedMeal(null)}>
               Close
             </Button>
+            </div>
           </div>
         </div>
       )}
