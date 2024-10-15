@@ -79,7 +79,7 @@ const MainPage = () => {
   return (
     <>
     <div className="flex flex-col items-center justify-center bg-stone-100">
-      <div className="w-full bg-current py-8 mb-6 relative">
+      <div className="w-full bg-current py-8 mb-4 relative">
         <div className="absolute left-10 top-2 ">
           <img src={img} alt="Logo" className="  h-32 w-25" />
         </div>
@@ -100,16 +100,17 @@ const MainPage = () => {
           Search
         </Button>
       </div>
-      <div className="flex justify-center items-center">
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <div className="flex justify-center items-center  ">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12  ">
           {searched === false &&
             initialMeals.map((k) => ( 
               <div
                 key={k.idCategory}
-                className="max-w-xs rounded overflow-hidden shadow-lg bg-white"
+                className="max-w-xs shadow-2xl  overflow-hidden transform  bg-white  hover:bg-white transition hover:scale-125  rounded-lg "
               >
                 <img
-                  className="w-full"
+                  className=""
                   src={k.strCategoryThumb}
                   alt={k.strCategory}
                 />
@@ -128,12 +129,12 @@ const MainPage = () => {
         </div>
       </div>
       <div className="flex justify-center mt-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           {searched === true &&
             myMeals.map((meal) => (
               <div
                 key={meal.idMeal}
-                className="max-w-xs rounded overflow-hidden shadow-lg bg-white"
+                className="max-w-xs bg-whiteshadow-2xl  overflow-hidden transform  bg-white  hover:bg-white transition hover:scale-125  rounded-lg "
               >
                 <img
                   className="w-full"
